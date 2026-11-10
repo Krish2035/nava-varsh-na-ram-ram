@@ -1,0 +1,1114 @@
+/* ==============================================================
+   NAVA VARSH NA RAM RAM - GUJARATI GREETING CARD STYLES
+   Designed with Royal Indian Heritage, Deep Devotional Aesthetics,
+   and Senior-Friendly High-Contrast Legibility
+   ============================================================== */
+
+:root {
+  --maroon-deep: #4a040b;
+  --maroon-royal: #750813;
+  --maroon-rich: #9e1220;
+  --saffron-orange: #ff6f00;
+  --saffron-bright: #ff8f00;
+  --gold-primary: #ffd700;
+  --gold-warm: #fbc02d;
+  --gold-light: #fff59d;
+  --gold-dark: #b8860b;
+  --cream-card: #fffdf8;
+  --cream-dark: #fcf4e4;
+  --text-dark: #2a0b0d;
+  --text-body: #3c1216;
+  --text-muted: #6d4c41;
+  --shadow-gold: 0 0 25px rgba(255, 215, 0, 0.45);
+  --shadow-card: 0 16px 40px rgba(74, 4, 11, 0.28);
+  --radius-card: 20px;
+  --radius-btn: 14px;
+  --font-main: 'Hind Vadodara', sans-serif;
+  --font-serif: 'Noto Serif Gujarati', serif;
+  --font-royal: 'Rozha One', serif;
+}
+
+/* Base Reset & Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: radial-gradient(circle at 50% 25%, #6a0b16 0%, #44040a 55%, #240004 100%);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Canvas (For Falling Flowers & Sparkles) */
+#festiveCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Traditional Hanging Toran (Top Festive Decoration) */
+.toran-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background: linear-gradient(180deg, rgba(74, 4, 11, 0.95) 0%, rgba(74, 4, 11, 0) 100%);
+  z-index: 25;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.toran-garland {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 105%;
+  margin-left: -2.5%;
+  position: relative;
+  border-top: 3.5px dashed var(--gold-primary);
+  padding-top: 2px;
+}
+
+.mango-leaf {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 24px solid #2e7d32;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+  transform-origin: top center;
+  animation: leafSway 4s ease-in-out infinite alternate;
+}
+
+.mango-leaf:nth-child(even) {
+  animation-delay: -2s;
+  border-top-color: #388e3c;
+}
+
+.flower {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-top: 2px;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+}
+
+.flower.marigold.yellow {
+  background: radial-gradient(circle, #fff59d 20%, #fbc02d 65%, #f57f17 100%);
+}
+
+.flower.marigold.orange {
+  background: radial-gradient(circle, #ffe082 20%, #ff9800 65%, #e65100 100%);
+}
+
+.flower.rose.red {
+  background: radial-gradient(circle, #ff8a80 20%, #d50000 70%, #880e4f 100%);
+}
+
+@keyframes leafSway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* Audio Control Button (Floating Top Right) */
+.audio-control-container {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 100;
+}
+
+.audio-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 0, 5, 0.85);
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 8px 14px;
+  border-radius: 25px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), var(--shadow-gold);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(8px);
+}
+
+.audio-btn:hover {
+  background: var(--maroon-royal);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+.audio-btn.playing {
+  border-color: #76ff03;
+  color: #f1f8e9;
+  animation: audioPulse 2.5s infinite;
+}
+
+@keyframes audioPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(118, 255, 3, 0.4); }
+  50% { box-shadow: 0 0 22px rgba(118, 255, 3, 0.8); }
+}
+
+/* App Main Container */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 55px 16px 30px;
+  position: relative;
+  z-index: 20;
+}
+
+/* Screens Management & Smooth Fade Transitions */
+.screen {
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.screen.active-screen {
+  display: block;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.screen.hidden-screen {
+  display: none;
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+}
+
+/* ==============================================================
+   SCREEN 1: COVER SCREEN (મુખ્ય આવકાર સ્ક્રીન)
+   ============================================================== */
+
+.cover-card {
+  background: radial-gradient(ellipse at 50% 20%, rgba(138, 14, 25, 0.95) 0%, rgba(68, 4, 10, 0.96) 65%, rgba(40, 0, 5, 0.98) 100%);
+  border: 3px solid var(--gold-warm);
+  border-radius: var(--radius-card);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Golden Inner Ornate Border */
+.cover-card::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  right: 7px;
+  bottom: 7px;
+  border: 1.5px solid rgba(255, 215, 0, 0.4);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+/* Sacred Chant Top Bar */
+.sacred-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.sacred-symbol {
+  color: var(--gold-primary);
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+/* Animated Divine Deity Centerpiece */
+.divine-god-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 10px auto 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Rotating Divine Aura Rays (તેજોમય પ્રભાચક્ર) */
+.divine-aura-rays {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 215, 0, 0.4) 0deg 15deg,
+    transparent 15deg 30deg,
+    rgba(255, 215, 0, 0.4) 30deg 45deg,
+    transparent 45deg 60deg,
+    rgba(255, 215, 0, 0.4) 60deg 75deg,
+    transparent 75deg 90deg,
+    rgba(255, 215, 0, 0.4) 90deg 105deg,
+    transparent 105deg 120deg,
+    rgba(255, 215, 0, 0.4) 120deg 135deg,
+    transparent 135deg 150deg,
+    rgba(255, 215, 0, 0.4) 150deg 165deg,
+    transparent 165deg 180deg,
+    rgba(255, 215, 0, 0.4) 180deg 195deg,
+    transparent 195deg 210deg,
+    rgba(255, 215, 0, 0.4) 210deg 225deg,
+    transparent 225deg 240deg,
+    rgba(255, 215, 0, 0.4) 240deg 255deg,
+    transparent 255deg 270deg,
+    rgba(255, 215, 0, 0.4) 270deg 285deg,
+    transparent 285deg 300deg,
+    rgba(255, 215, 0, 0.4) 300deg 315deg,
+    transparent 315deg 330deg,
+    rgba(255, 215, 0, 0.4) 330deg 345deg,
+    transparent 345deg 360deg
+  );
+  animation: rotateAura 20s linear infinite;
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.divine-aura-glow {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 235, 59, 0.65) 0%, rgba(255, 152, 0, 0.35) 55%, transparent 75%);
+  animation: pulseAuraGlow 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.deity-artwork-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  animation: floatDeity 4.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.75));
+}
+
+.deity-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rotateAura {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseAuraGlow {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
+}
+
+@keyframes floatDeity {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+/* Cover Typography */
+.cover-titles {
+  margin: 10px 0 20px;
+}
+
+.festival-subbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.main-greeting-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.title-top {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 0.8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.title-highlight {
+  font-family: var(--font-royal);
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #fff176 40%, #ffb300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 16px rgba(255, 193, 7, 0.6);
+  letter-spacing: 0.5px;
+}
+
+.cover-blessing-summary {
+  font-size: 1.18rem;
+  color: #ffecb3;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+/* ==============================================================
+   THE GRAND CENTER BUTTON (Senior-Friendly, Prominent, Pulsating)
+   ============================================================== */
+.center-action-area {
+  margin: 24px 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.grand-open-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8f00 50%, #d84315 100%);
+  border: 3px solid #fff9c4;
+  color: #260507;
+  padding: 16px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(255, 111, 0, 0.65), 0 0 25px rgba(255, 215, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: grandPulse 2.8s infinite;
+  overflow: hidden;
+  max-width: 95%;
+}
+
+.grand-open-btn:hover, .grand-open-btn:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 35px rgba(255, 111, 0, 0.85), 0 0 35px rgba(255, 215, 0, 1);
+  outline: none;
+}
+
+.grand-open-btn:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+@keyframes grandPulse {
+  0% {
+    box-shadow: 0 8px 25px rgba(255, 111, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 10px 35px rgba(255, 111, 0, 0.85), 0 0 40px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 160, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(255, 111, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.7);
+  }
+}
+
+/* Button Shimmer Sweep Effect */
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  animation: shineSweep 3.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes shineSweep {
+  0% { left: -100%; }
+  35%, 100% { left: 200%; }
+}
+
+.btn-diya-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  animation: diyaBounce 2s ease-in-out infinite alternate;
+}
+
+.btn-diya-icon.right {
+  animation-delay: -1s;
+}
+
+@keyframes diyaBounce {
+  0% { transform: rotate(-5deg) scale(0.95); }
+  100% { transform: rotate(5deg) scale(1.1); }
+}
+
+.btn-text-group {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.btn-main-text {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #210204;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.btn-sub-text {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4a0c0f;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom Teaser & Diyas */
+.corner-diyas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 215, 0, 0.3);
+}
+
+.cover-sender-teaser {
+  color: var(--gold-light);
+  font-size: 1.12rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.cover-sender-teaser strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* Diya Widget Component */
+.diya-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 48px;
+}
+
+.diya-flame-wrapper {
+  position: relative;
+  width: 20px;
+  height: 28px;
+  margin-bottom: -3px;
+}
+
+.flame-glow {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.8) 0%, rgba(255, 87, 34, 0.3) 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: flickerGlow 1.8s infinite alternate ease-in-out;
+}
+
+.flame-core {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 24px;
+  background: radial-gradient(ellipse at 50% 80%, #ffffff 0%, #ffee58 35%, #ff5722 80%, #b71c1c 100%);
+  border-radius: 50% 50% 20% 20% / 65% 65% 35% 35%;
+  animation: flickerCore 1.6s infinite alternate ease-in-out;
+  transform-origin: bottom center;
+}
+
+.diya-brass-base {
+  width: 44px;
+  height: 16px;
+  background: linear-gradient(180deg, #ffd700 0%, #e65100 100%);
+  border-radius: 0 0 22px 22px;
+  border-top: 3px solid #ffeb3b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes flickerCore {
+  0% { transform: translateX(-50%) rotate(-3deg) scaleY(0.95); }
+  50% { transform: translateX(-50%) rotate(3deg) scaleY(1.08); }
+  100% { transform: translateX(-50%) rotate(-2deg) scaleY(1.02); }
+}
+
+@keyframes flickerGlow {
+  0% { opacity: 0.7; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ==============================================================
+   SCREEN 2: ROYAL GREETING CARD (શુભેચ્છા પત્રિકા)
+   ============================================================== */
+
+.royal-greeting-card {
+  background: linear-gradient(135deg, #fffdf8 0%, #fff7e6 50%, #fff3db 100%);
+  border: 4px solid var(--gold-primary);
+  border-radius: var(--radius-card);
+  padding: 30px 24px 26px;
+  box-shadow: var(--shadow-card), 0 0 35px rgba(255, 215, 0, 0.35);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Card Decorative Golden Frame Corners */
+.card-corner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--gold-dark);
+  pointer-events: none;
+}
+
+.card-corner.top-left {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 6px 0 0 0;
+}
+
+.card-corner.top-right {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 6px 0 0;
+}
+
+.card-corner.bottom-left {
+  bottom: 8px;
+  left: 8px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 6px;
+}
+
+.card-corner.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 6px 0;
+}
+
+/* Card Header: Kalash & Shubh-Labh */
+.card-divine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 320px;
+  margin: 0 auto 10px;
+}
+
+.shubh-labh {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--maroon-royal);
+  padding: 4px 10px;
+  border: 1.5px solid var(--maroon-rich);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(117, 8, 19, 0.15);
+}
+
+.shubh-labh .motif-symbol {
+  color: #d50000;
+  font-size: 1.35rem;
+}
+
+.kalash-container {
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: kalashGentleSway 3s ease-in-out infinite alternate;
+}
+
+.kalash-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes kalashGentleSway {
+  0% { transform: scale(0.98); }
+  100% { transform: scale(1.04); }
+}
+
+/* Sanskrit Shloka */
+.card-shloka {
+  background: rgba(183, 28, 28, 0.07);
+  border-top: 1px solid rgba(183, 28, 28, 0.2);
+  border-bottom: 1px solid rgba(183, 28, 28, 0.2);
+  padding: 8px 12px;
+  margin: 10px auto 16px;
+  border-radius: 6px;
+  color: var(--maroon-deep);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.shloka-sub {
+  font-size: 0.94rem;
+  color: #79111b;
+}
+
+/* Card Title Block */
+.golden-ribbon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-royal) 60%, var(--maroon-rich) 100%);
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: 30px;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 4px 12px rgba(117, 8, 19, 0.35);
+  margin-bottom: 8px;
+}
+
+.golden-ribbon h2 {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ribbon-flower {
+  font-size: 1.4rem;
+}
+
+.card-subheading {
+  font-size: 1.25rem;
+  color: var(--maroon-rich);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+/* Message Body (High-Contrast & Large Font for Grandparents & Elders) */
+.card-message-body {
+  text-align: left;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 215, 0, 0.5);
+  border-radius: 14px;
+  padding: 20px 20px 16px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.salutation {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--maroon-royal);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.greeting-lead {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.highlight-ram {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--maroon-rich);
+  text-align: center;
+  margin: 10px 0;
+  background: #fff8e1;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 2px dashed #ffb300;
+  box-shadow: 0 2px 8px rgba(255, 179, 0, 0.25);
+}
+
+.blessing-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blessing-verse {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+.blessing-verse strong {
+  color: var(--maroon-deep);
+  font-weight: 800;
+}
+
+/* Signature Block: Veljibhai Padshala */
+.card-signature-section {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff1c4 100%);
+  border: 2px solid var(--gold-dark);
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
+}
+
+.signature-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.div-line {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.div-star {
+  color: var(--maroon-royal);
+  font-size: 1.05rem;
+}
+
+.wishing-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.sender-name {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--maroon-deep);
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.sender-family {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--maroon-royal);
+  margin-bottom: 6px;
+}
+
+.sender-closing-tag {
+  display: inline-block;
+  background: var(--maroon-royal);
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 4px 18px;
+  border-radius: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--gold-primary);
+}
+
+/* ==============================================================
+   ACTION BUTTONS GRID (WhatsApp, Flowers, Bell, Back)
+   ============================================================== */
+.card-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-main);
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  min-height: 64px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+  transform: translateY(1px);
+}
+
+.action-btn-icon {
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+.action-btn-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-btn-content strong {
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.action-btn-content small {
+  font-size: 0.82rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Specific Action Button Themes */
+.btn-whatsapp {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #ffffff;
+  border: 2px solid #a7f3d0;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  padding: 14px 18px;
+  justify-content: center;
+}
+
+.btn-whatsapp .action-btn-icon {
+  font-size: 2.2rem;
+}
+
+.btn-whatsapp .action-btn-content strong {
+  font-size: 1.35rem;
+}
+
+.btn-whatsapp .action-btn-content small {
+  font-size: 0.95rem;
+}
+
+.btn-flowers {
+  background: linear-gradient(135deg, #ff4081 0%, #c2185b 100%);
+  color: #ffffff;
+  border: 1.5px solid #f8bbd0;
+}
+
+.btn-bell {
+  background: linear-gradient(135deg, #ffa000 0%, #e65100 100%);
+  color: #ffffff;
+  border: 1.5px solid #ffe082;
+}
+
+.btn-return {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #5d4037 0%, #3e2723 100%);
+  color: #ffecb3;
+  border: 1.5px solid #d7ccc8;
+  justify-content: center;
+}
+
+/* Card Footer Note */
+.card-footer-note {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--maroon-royal);
+  padding-top: 10px;
+  border-top: 1px dashed rgba(184, 134, 11, 0.4);
+}
+
+/* Toast Message */
+.toast-message {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(30, 0, 5, 0.95);
+  color: var(--gold-light);
+  border: 1.5px solid var(--gold-primary);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.35s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.toast-message.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==============================================================
+   RESPONSIVE DESIGN (Optimized for Mobile, Tablet & Desktop)
+   ============================================================== */
+
+@media (max-width: 520px) {
+  .app-container {
+    padding: 48px 10px 20px;
+  }
+
+  .cover-card {
+    padding: 18px 14px;
+  }
+
+  .sacred-banner {
+    font-size: 0.92rem;
+    gap: 6px;
+  }
+
+  .divine-god-container {
+    width: 210px;
+    height: 210px;
+  }
+
+  .divine-aura-rays {
+    width: 230px;
+    height: 230px;
+  }
+
+  .title-top {
+    font-size: 1.7rem;
+  }
+
+  .title-highlight {
+    font-size: 2.15rem;
+  }
+
+  .cover-blessing-summary {
+    font-size: 1.05rem;
+  }
+
+  .grand-open-btn {
+    padding: 14px 20px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn-main-text {
+    font-size: 1.35rem;
+  }
+
+  .btn-sub-text {
+    font-size: 0.9rem;
+  }
+
+  .btn-diya-icon {
+    font-size: 1.6rem;
+  }
+
+  .royal-greeting-card {
+    padding: 22px 14px 18px;
+  }
+
+  .golden-ribbon h2 {
+    font-size: 1.5rem;
+  }
+
+  .salutation {
+    font-size: 1.15rem;
+  }
+
+  .greeting-lead {
+    font-size: 1.1rem;
+  }
+
+  .highlight-ram {
+    font-size: 1.35rem;
+    padding: 6px 10px;
+  }
+
+  .blessing-verse {
+    font-size: 1.05rem;
+  }
+
+  .sender-name {
+    font-size: 1.75rem;
+  }
+
+  .sender-family {
+    font-size: 1.2rem;
+  }
+
+  .card-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-whatsapp, .btn-return {
+    grid-column: span 1;
+  }
+
+  .corner-diyas {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .cover-sender-teaser {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.05rem;
+  }
+}

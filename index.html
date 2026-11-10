@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>નવા વર્ષના રામ રામ | વેલજીભાઈ પાડશાળા</title>
+
+  <!-- Meta Tags for Social Media & WhatsApp Sharing -->
+  <meta name="description" content="વિક્રમ સંવતના પાવન પર્વે આપ સૌને વેલજીભાઈ પાડશાળા તરફથી નવા વર્ષના રામ રામ અને હાર્દિક નૂતન વર્ષાભિનંદન!">
+  <meta property="og:title" content="🌺 નવા વર્ષના રામ રામ - વેલજીભાઈ પાડશાળા 🪔">
+  <meta property="og:description" content="નૂતન વર્ષાભિનંદન! આપના માટે વેલજીભાઈ પાડશાળા તરફથી સુંદર શુભેચ્છા પત્રિકા. અહીં ક્લિક કરીને જુઓ.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#b71c1c">
+
+  <!-- Google Fonts: Hind Vadodara, Noto Serif Gujarati, Rozha One -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;600;700;900&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Music Control Button (Floating) -->
+  <div class="audio-control-container">
+    <button id="audioToggleBtn" class="audio-btn" aria-label="ભક્તિ સંગીત ચાલુ અથવા બંધ કરો" title="ભક્તિ સંગીત ચાલુ / બંધ કરો">
+      <span class="audio-icon" id="audioIcon">🔔</span>
+      <span class="audio-text" id="audioText">સંગીત</span>
+    </button>
+  </div>
+
+  <!-- Traditional Gujarati Hanging Toran (Decorative Top Border) -->
+  <header class="toran-header" aria-hidden="true">
+    <div class="toran-garland">
+      <div class="mango-leaf leaf-1"></div>
+      <div class="flower marigold yellow"></div>
+      <div class="mango-leaf leaf-2"></div>
+      <div class="flower marigold orange"></div>
+      <div class="mango-leaf leaf-3"></div>
+      <div class="flower rose red"></div>
+      <div class="mango-leaf leaf-4"></div>
+      <div class="flower marigold yellow"></div>
+      <div class="mango-leaf leaf-5"></div>
+      <div class="flower marigold orange"></div>
+      <div class="mango-leaf leaf-6"></div>
+      <div class="flower rose red"></div>
+      <div class="mango-leaf leaf-7"></div>
+      <div class="flower marigold yellow"></div>
+      <div class="mango-leaf leaf-8"></div>
+    </div>
+  </header>
+
+  <!-- Interactive Canvas for Floating Petals, Golden Dust, and Fireworks -->
+  <canvas id="festiveCanvas"></canvas>
+
+  <main class="app-container">
+
+    <!-- ============================================== -->
+    <!-- SCREEN 1: COVER SCREEN (નવા વર્ષના રામ રામ) -->
+    <!-- ============================================== -->
+    <section id="screen1" class="screen active-screen">
+      <div class="screen-content cover-card">
+
+        <!-- Sacred Chant Top Bar -->
+        <div class="sacred-banner">
+          <span class="sacred-text">॥ શ્રી ગણેશાય નમઃ ॥</span>
+          <span class="sacred-symbol">卐</span>
+          <span class="sacred-text">॥ જય શ્રી કૃષ્ણ ॥</span>
+          <span class="sacred-symbol">卐</span>
+          <span class="sacred-text">॥ જય સિયારામ ॥</span>
+        </div>
+
+        <!-- Animated Divine Deity Centerpiece (Hindu God Animation) -->
+        <div class="divine-god-container">
+          <!-- Rotating Divine Solar Halo (દિવ્ય તેજોવલય / પ્રભાચક્ર) -->
+          <div class="divine-aura-rays"></div>
+          <div class="divine-aura-glow"></div>
+          <div class="divine-ring-stars"></div>
+
+          <!-- Divine SVG Artwork: Lord Krishna / Shreenathji / Bhagwan Shri Ram Darshan -->
+          <div class="deity-artwork-wrapper">
+            <svg class="deity-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ભગવાન શ્રી કૃષ્ણ અને શ્રી રામ દર્શન">
+              <defs>
+                <!-- Golden Aura Gradient -->
+                <radialGradient id="auraGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fff9c4" stop-opacity="1" />
+                  <stop offset="45%" stop-color="#ffd54f" stop-opacity="0.85" />
+                  <stop offset="75%" stop-color="#ff9800" stop-opacity="0.5" />
+                  <stop offset="100%" stop-color="#e65100" stop-opacity="0" />
+                </radialGradient>
+
+                <!-- Crown & Gold Gradient -->
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff176" />
+                  <stop offset="50%" stop-color="#fbc02d" />
+                  <stop offset="100%" stop-color="#d84315" />
+                </linearGradient>
+
+                <!-- Feather Cyan Gradient -->
+                <linearGradient id="peacockGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00695c" />
+                  <stop offset="40%" stop-color="#00897b" />
+                  <stop offset="80%" stop-color="#00acc1" />
+                  <stop offset="100%" stop-color="#1de9b6" />
+                </linearGradient>
+
+                <!-- Diya Flame Gradient -->
+                <radialGradient id="flameGrad" cx="50%" cy="80%" r="60%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="30%" stop-color="#ffee58" />
+                  <stop offset="70%" stop-color="#ff7043" />
+                  <stop offset="100%" stop-color="#d50000" />
+                </radialGradient>
+              </defs>
+
+              <!-- Outer Glowing Circle -->
+              <circle cx="160" cy="160" r="148" fill="url(#auraGrad)" class="pulse-aura" />
+
+              <!-- Traditional Ornate Outer Ring -->
+              <circle cx="160" cy="160" r="135" fill="none" stroke="#ffd700" stroke-width="3" stroke-dasharray="6,4" />
+              <circle cx="160" cy="160" r="128" fill="rgba(100, 10, 20, 0.55)" stroke="#fbc02d" stroke-width="2" />
+
+              <!-- Deity Halo Rays (Suns / Lotus Petals) -->
+              <g class="lotus-halo" transform="translate(160,160)">
+                <!-- 16 Sacred Lotus Petals Around Deity -->
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(22.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(45)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(67.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(90)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(112.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(135)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(157.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(180)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(202.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(225)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(247.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(270)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(292.5)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(315)"/>
+                <path d="M 0 -126 Q 10 -105 0 -95 Q -10 -105 0 -126 Z" fill="#ffd54f" opacity="0.9" transform="rotate(337.5)"/>
+              </g>
+
+              <!-- Sacred Om / Shreenathji Netra / Lord Krishna Face & Crown Artwork -->
+              <!-- Divine Blue Hue Face Silhouette of Lord Krishna -->
+              <ellipse cx="160" cy="175" rx="52" ry="62" fill="#5c93c4" opacity="0.92" />
+              <!-- Tilak: Traditional Urdhva Pundra (ચંદન તિલક) with Kumkum center -->
+              <path d="M 152 140 L 152 168 Q 160 178 168 168 L 168 140 Q 160 148 152 140 Z" fill="#fff9c4" stroke="#fbc02d" stroke-width="1.2" />
+              <line x1="160" y1="145" x2="160" y2="173" stroke="#d50000" stroke-width="3.5" stroke-linecap="round" />
+              <circle cx="160" cy="180" r="3.2" fill="#d50000" />
+
+              <!-- Divine Crown (મુગુટ / Mukut) -->
+              <path d="M 115 138 L 160 70 L 205 138 Q 160 146 115 138 Z" fill="url(#goldGrad)" stroke="#ffd700" stroke-width="2" />
+              <path d="M 130 135 L 160 88 L 190 135 Z" fill="#b71c1c" />
+              <circle cx="160" cy="85" r="7" fill="#ffd54f" stroke="#e65100" stroke-width="2" />
+              <circle cx="160" cy="85" r="3.5" fill="#d50000" />
+              <!-- Mukut Pearls Base -->
+              <circle cx="125" cy="138" r="3.5" fill="#fff" />
+              <circle cx="137" cy="139" r="3.5" fill="#fff" />
+              <circle cx="149" cy="140" r="3.5" fill="#fff" />
+              <circle cx="160" cy="140.5" r="4" fill="#ffd700" />
+              <circle cx="171" cy="140" r="3.5" fill="#fff" />
+              <circle cx="183" cy="139" r="3.5" fill="#fff" />
+              <circle cx="195" cy="138" r="3.5" fill="#fff" />
+
+              <!-- Peacock Feather (મોરપિચ્છ / Morpankh) -->
+              <g class="morpankh" transform="translate(160, 68) rotate(-20)">
+                <ellipse cx="0" cy="-28" rx="16" ry="24" fill="url(#peacockGrad)" />
+                <ellipse cx="0" cy="-26" rx="11" ry="17" fill="#004d40" />
+                <ellipse cx="0" cy="-24" rx="7" ry="11" fill="#0277bd" />
+                <circle cx="0" cy="-22" r="4.5" fill="#ffd600" />
+                <circle cx="0" cy="-22" r="2.5" fill="#4a148c" />
+                <path d="M 0 -4 L 0 10" stroke="#ffd54f" stroke-width="2" />
+              </g>
+
+              <!-- Serene Eyes & Gentle Divine Smile (Shree Krishna Darshan) -->
+              <!-- Gentle Eyes -->
+              <path d="M 132 178 Q 143 172 153 178" fill="none" stroke="#1a237e" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M 167 178 Q 177 172 188 178" fill="none" stroke="#1a237e" stroke-width="2.5" stroke-linecap="round" />
+              <!-- Nose -->
+              <path d="M 160 174 L 157 194 Q 161 197 163 194" fill="none" stroke="#3949ab" stroke-width="2" stroke-linecap="round" />
+              <!-- Divine Smile -->
+              <path d="M 148 206 Q 160 216 172 206" fill="none" stroke="#b71c1c" stroke-width="3.2" stroke-linecap="round" />
+
+              <!-- Golden Flute (વાંસળી / Bansuri) -->
+              <g class="bansuri" transform="translate(110, 222) rotate(-15)">
+                <rect x="0" y="0" width="120" height="11" rx="5" fill="url(#goldGrad)" stroke="#f57f17" stroke-width="1.5" />
+                <!-- Flute Rings & Holes -->
+                <circle cx="35" cy="5.5" r="2" fill="#3e2723" />
+                <circle cx="50" cy="5.5" r="2" fill="#3e2723" />
+                <circle cx="65" cy="5.5" r="2" fill="#3e2723" />
+                <circle cx="80" cy="5.5" r="2" fill="#3e2723" />
+                <circle cx="95" cy="5.5" r="2" fill="#3e2723" />
+                <!-- Hanging Red Tassels on Flute -->
+                <line x1="110" y1="11" x2="110" y2="28" stroke="#d50000" stroke-width="2" />
+                <circle cx="110" cy="30" r="3.5" fill="#ffd600" />
+              </g>
+
+              <!-- Bottom Garland (વૈજયંતી માળા / Rose & Mogra Garland) -->
+              <path d="M 115 235 Q 160 270 205 235" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="10,4" />
+              <path d="M 115 235 Q 160 270 205 235" fill="none" stroke="#d50000" stroke-width="3" stroke-dasharray="8,8" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Main Cover Typography in Rich Gujarati -->
+        <div class="cover-titles">
+          <div class="festival-subbadge">
+            <span class="sparkle-icon">✨</span>
+            <span>વિક્રમ સંવત ૨૦૮૧ ના પાવન પર્વે</span>
+            <span class="sparkle-icon">✨</span>
+          </div>
+
+          <h1 class="main-greeting-title">
+            <span class="title-top">નૂતન વર્ષાભિનંદન</span>
+            <span class="title-highlight">નવા વર્ષના રામ રામ</span>
+          </h1>
+
+          <p class="cover-blessing-summary">
+            આપના જીવનમાં નવું વર્ષ સુખ, શાંતિ, ઉત્તમ સ્વાસ્થ્ય અને અખૂટ સમૃદ્ધિ લઈને આવે એવી અંતઃકરણપૂર્વકની પ્રભુ ચરણોમાં પ્રાર્થના.
+          </p>
+        </div>
+
+        <!-- THE MAIN CENTER BUTTON (Prominent, High-Contrast, Easy for Elders) -->
+        <div class="center-action-area">
+          <button id="openGreetingBtn" class="grand-open-btn" aria-label="શુભેચ્છા પત્રિકા ખોલો અને રામ રામ સ્વીકારો">
+            <span class="btn-shine"></span>
+            <span class="btn-diya-icon left">🪔</span>
+            <span class="btn-text-group">
+              <span class="btn-main-text">શુભેચ્છા પત્રિકા ખોલો</span>
+              <span class="btn-sub-text">રામ રામ સ્વીકારો • અહીં દબાવો</span>
+            </span>
+            <span class="btn-diya-icon right">🪔</span>
+          </button>
+        </div>
+
+        <!-- Traditional Floating Diya Corner Accents -->
+        <div class="corner-diyas">
+          <div class="diya-widget left-diya">
+            <div class="diya-flame-wrapper">
+              <div class="flame-glow"></div>
+              <div class="flame-core"></div>
+            </div>
+            <div class="diya-brass-base"></div>
+          </div>
+          <div class="cover-sender-teaser">
+            <span class="flower-icon">🌸</span>
+            <span>શુભેચ્છક: <strong>શ્રી વેલજીભાઈ પાડશાળા</strong></span>
+            <span class="flower-icon">🌸</span>
+          </div>
+          <div class="diya-widget right-diya">
+            <div class="diya-flame-wrapper">
+              <div class="flame-glow"></div>
+              <div class="flame-core"></div>
+            </div>
+            <div class="diya-brass-base"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 2: GREETING CARD (વેલજીભાઈ પાડશાળા સંદેશ) -->
+    <!-- ============================================== -->
+    <section id="screen2" class="screen hidden-screen">
+      <div class="screen-content greeting-card-wrapper">
+
+        <!-- Royal Card Container with Traditional Golden Border -->
+        <article class="royal-greeting-card">
+          
+          <!-- Card Decorative Golden Corners -->
+          <div class="card-corner top-left"></div>
+          <div class="card-corner top-right"></div>
+          <div class="card-corner bottom-left"></div>
+          <div class="card-corner bottom-right"></div>
+
+          <!-- Auspicious Kalash & Shubh-Labh Header -->
+          <div class="card-divine-header">
+            <div class="shubh-labh left-motif">
+              <span class="motif-text">શુભ</span>
+              <span class="motif-symbol">卐</span>
+            </div>
+
+            <!-- Central Auspicious Kalash Icon -->
+            <div class="kalash-container">
+              <svg class="kalash-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Coconut (શ્રીફળ) -->
+                <circle cx="50" cy="30" r="16" fill="#6d4c41" stroke="#ffd700" stroke-width="1.5" />
+                <path d="M 40 30 Q 50 16 60 30" fill="none" stroke="#d7ccc8" stroke-width="1.2" />
+                <!-- Mango Leaves (આસોપાલવ પાન) -->
+                <path d="M 50 36 C 30 20 22 42 32 46 Z" fill="#2e7d32" stroke="#ffd700" stroke-width="1" />
+                <path d="M 50 36 C 70 20 78 42 68 46 Z" fill="#2e7d32" stroke="#ffd700" stroke-width="1" />
+                <path d="M 50 36 C 40 10 60 10 50 20 Z" fill="#388e3c" stroke="#ffd700" stroke-width="1" />
+                <!-- Kalash Pot (તાંબા/પિત્તળનો કળશ) -->
+                <path d="M 32 46 L 68 46 L 75 74 C 75 88 25 88 25 74 Z" fill="url(#goldGrad)" stroke="#b71c1c" stroke-width="2" />
+                <!-- Swastik on Kalash -->
+                <path d="M 50 56 L 50 72 M 42 64 L 58 64 M 42 56 L 42 64 M 58 64 L 58 72 M 50 56 L 58 56 M 42 72 L 50 72" stroke="#b71c1c" stroke-width="2" stroke-linecap="round" fill="none" />
+                <!-- Kalash Base -->
+                <rect x="36" y="84" width="28" height="6" rx="3" fill="#f57f17" stroke="#ffd700" stroke-width="1" />
+              </svg>
+            </div>
+
+            <div class="shubh-labh right-motif">
+              <span class="motif-symbol">卐</span>
+              <span class="motif-text">લાભ</span>
+            </div>
+          </div>
+
+          <!-- Top Sanskrit Sloka -->
+          <div class="card-shloka">
+            <p>॥ સર્વે ભવન્તુ સુખિનઃ સર્વે સન્તુ નિરામયાઃ ॥</p>
+            <p class="shloka-sub">॥ સર્વે ભદ્રાણિ પશ્યન્તુ મા કશ્ચિદ્ દુઃખ ભાગ્ભવેત્ ॥</p>
+          </div>
+
+          <!-- Greeting Heading -->
+          <div class="card-title-block">
+            <div class="golden-ribbon">
+              <span class="ribbon-flower">🪔</span>
+              <h2>નૂતન વર્ષાભિનંદન</h2>
+              <span class="ribbon-flower">🪔</span>
+            </div>
+            <h3 class="card-subheading">વિક્રમ સંવત ૨૦૮૧ • સાલ મુબારક</h3>
+          </div>
+
+          <!-- The Heartfelt Gujarati Greeting Message -->
+          <div class="card-message-body">
+            <p class="salutation">
+              સ્નેહી આદરણીય વડીલો, સ્નેહીજનો તથા વહાલા મિત્રો,
+            </p>
+
+            <p class="greeting-lead">
+              આજથી પ્રારંભ થતા હિન્દુ નૂતન વર્ષના મંગલમય પ્રભાતે આપ સર્વેને અમારા અંતઃકરણપૂર્વક 
+              <span class="highlight-ram">« નવા વર્ષના રામ રામ »</span>
+            </p>
+
+            <div class="blessing-box">
+              <p class="blessing-verse">
+                પરમકૃપાળુ પરમાત્મા <strong>ભગવાન શ્રી રામ અને શ્રી કૃષ્ણ</strong>ની અસીમ કૃપાથી, 
+                આ નવું વર્ષ આપના અને આપના પરિવાર માટે <strong>ઉત્તમ સ્વાસ્થ્ય</strong>, 
+                <strong>દીર્ઘ આયુષ્ય</strong>, <strong>અખૂટ સુખ-શાંતિ</strong> અને 
+                <strong>ભવ્ય સમૃદ્ધિ</strong> લઈને આવે.
+              </p>
+              <p class="blessing-verse">
+                આપના આંગણે સદાય હાસ્ય, પ્રેમ અને આનંદનો વાસ રહે, આપના તમામ શુભ મનોરથો સિદ્ધ થાય, 
+                અને આપનું જીવન ઉત્તરોત્તર પ્રગતિના પંથે આગળ વધે એવી પ્રભુ ચરણોમાં હૃદયપૂર્વકની પ્રાર્થના.
+              </p>
+            </div>
+          </div>
+
+          <!-- Sender Signature Section (Veljibhai Padshala) -->
+          <div class="card-signature-section">
+            <div class="signature-divider">
+              <span class="div-line"></span>
+              <span class="div-star">✦ 🌺 ✦</span>
+              <span class="div-line"></span>
+            </div>
+
+            <div class="signature-content">
+              <div class="wishing-label">ભાવભીના સ્નેહ સાથે શુભેચ્છક:</div>
+              <div class="sender-name">શ્રી વેલજીભાઈ પાડશાળા</div>
+              <div class="sender-family">તથા સમસ્ત પાડશાળા પરિવાર</div>
+              <div class="sender-closing-tag">
+                <span>જય શ્રી કૃષ્ણ • નવા વર્ષના જય સિયારામ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Elderly-Friendly Interactive Action Buttons -->
+          <div class="card-actions-grid">
+            
+            <!-- 1. WhatsApp Share Button -->
+            <button id="whatsappShareBtn" class="action-btn btn-whatsapp" aria-label="વોટ્સએપ પર આ શુભેચ્છા શેર કરો">
+              <span class="action-btn-icon">📲</span>
+              <span class="action-btn-content">
+                <strong>વોટ્સએપ પર મોકલો</strong>
+                <small>મિત્રો-પરિવાર સાથે શેર કરો</small>
+              </span>
+            </button>
+
+            <!-- 2. Flower Shower Celebration Button -->
+            <button id="flowerShowerBtn" class="action-btn btn-flowers" aria-label="પુષ્પવર્ષા કરો">
+              <span class="action-btn-icon">🌸</span>
+              <span class="action-btn-content">
+                <strong>પુષ્પવર્ષા કરો</strong>
+                <small>ફૂલોની પાવન વર્ષા</small>
+              </span>
+            </button>
+
+            <!-- 3. Temple Bell Chime Button -->
+            <button id="templeBellBtn" class="action-btn btn-bell" aria-label="મંદિરની ઘંટડી વગાડો">
+              <span class="action-btn-icon">🔔</span>
+              <span class="action-btn-content">
+                <strong>મંદિરની ઘંટડી</strong>
+                <small>પવિત્ર ઘંટારવ સાંભળો</small>
+              </span>
+            </button>
+
+            <!-- 4. Back / Replay Cover Button -->
+            <button id="backToCoverBtn" class="action-btn btn-return" aria-label="મુખ્ય પાના પર પાછા જાઓ">
+              <span class="action-btn-icon">↩️</span>
+              <span class="action-btn-content">
+                <strong>મુખ્ય પેજ પર જાઓ</strong>
+                <small>ફરીથી પત્રિકા જુઓ</small>
+              </span>
+            </button>
+
+          </div>
+
+          <!-- Bottom Footer Note -->
+          <div class="card-footer-note">
+            <p>દીપાવલી તથા નૂતન વર્ષના પાવન તહેવારની હાર્દિક મંગલકામનાઓ 🪔</p>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sweet Notification Toast (For copy/share status) -->
+  <div id="toastMessage" class="toast-message" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
