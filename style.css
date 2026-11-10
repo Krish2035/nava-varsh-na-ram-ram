@@ -1,7 +1,7 @@
 /* ==============================================================
    NAVA VARSH NA RAM RAM - GUJARATI GREETING CARD STYLES
-   Designed with Royal Indian Heritage, Deep Devotional Aesthetics,
-   and Senior-Friendly High-Contrast Legibility
+   Fully Responsive for Desktop, Laptop, Tablet, and Mobile
+   Royal Indian Heritage, Deep Devotion & Senior-Friendly Design
    ============================================================== */
 
 :root {
@@ -20,27 +20,34 @@
   --text-body: #3c1216;
   --text-muted: #6d4c41;
   --shadow-gold: 0 0 25px rgba(255, 215, 0, 0.45);
-  --shadow-card: 0 16px 40px rgba(74, 4, 11, 0.28);
-  --radius-card: 20px;
+  --shadow-card: 0 16px 45px rgba(45, 0, 7, 0.35);
+  --radius-card: clamp(16px, 2.5vw, 24px);
   --radius-btn: 14px;
-  --font-main: 'Hind Vadodara', sans-serif;
-  --font-serif: 'Noto Serif Gujarati', serif;
-  --font-royal: 'Rozha One', serif;
+  --font-main: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Noto Serif Gujarati', Georgia, serif;
+  --font-royal: 'Rozha One', 'Noto Serif Gujarati', serif;
 }
 
 /* Base Reset & Typography */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: var(--font-main);
   background: radial-gradient(circle at 50% 25%, #6a0b16 0%, #44040a 55%, #240004 100%);
+  background-attachment: fixed;
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
@@ -64,6 +71,7 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100vw;
   height: 38px;
   background: linear-gradient(180deg, rgba(74, 4, 11, 0.95) 0%, rgba(74, 4, 11, 0) 100%);
   z-index: 25;
@@ -75,8 +83,8 @@ html, body {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  width: 105%;
-  margin-left: -2.5%;
+  width: 102%;
+  margin-left: -1%;
   position: relative;
   border-top: 3.5px dashed var(--gold-primary);
   padding-top: 2px;
@@ -85,9 +93,9 @@ html, body {
 .mango-leaf {
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 24px solid #2e7d32;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 22px solid #2e7d32;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
   transform-origin: top center;
   animation: leafSway 4s ease-in-out infinite alternate;
@@ -99,11 +107,12 @@ html, body {
 }
 
 .flower {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   margin-top: 2px;
   box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+  flex-shrink: 0;
 }
 
 .flower.marigold.yellow {
@@ -123,36 +132,37 @@ html, body {
   100% { transform: rotate(5deg); }
 }
 
-/* Audio Control Button (Floating Top Right) */
+/* Audio Control Button (Floating Top Right - Notch Safe) */
 .audio-control-container {
   position: fixed;
-  top: 18px;
-  right: 18px;
+  top: max(14px, env(safe-area-inset-top, 14px));
+  right: max(14px, env(safe-area-inset-right, 14px));
   z-index: 100;
 }
 
 .audio-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(30, 0, 5, 0.85);
+  gap: 6px;
+  background: rgba(30, 0, 5, 0.88);
   border: 1.5px solid var(--gold-primary);
   color: var(--gold-light);
-  padding: 8px 14px;
+  padding: 7px 13px;
   border-radius: 25px;
   font-family: var(--font-main);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), var(--shadow-gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45), var(--shadow-gold);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .audio-btn:hover {
   background: var(--maroon-royal);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.55);
 }
 
 .audio-btn.playing {
@@ -166,24 +176,25 @@ html, body {
   50% { box-shadow: 0 0 22px rgba(118, 255, 3, 0.8); }
 }
 
-/* App Main Container */
+/* App Main Container (Fluid centering across Desktop & Mobile) */
 .app-container {
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 55px 16px 30px;
+  padding: clamp(50px, 7vh, 75px) clamp(12px, 3.5vw, 28px) clamp(25px, 5vh, 45px);
   position: relative;
   z-index: 20;
 }
 
-/* Screens Management & Smooth Fade Transitions */
+/* Screens Management & Smooth Transitions */
 .screen {
   width: 100%;
-  max-width: 660px;
+  max-width: min(94vw, 680px);
   margin: 0 auto;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .screen.active-screen {
@@ -203,12 +214,12 @@ html, body {
    ============================================================== */
 
 .cover-card {
-  background: radial-gradient(ellipse at 50% 20%, rgba(138, 14, 25, 0.95) 0%, rgba(68, 4, 10, 0.96) 65%, rgba(40, 0, 5, 0.98) 100%);
-  border: 3px solid var(--gold-warm);
+  background: radial-gradient(ellipse at 50% 20%, rgba(138, 14, 25, 0.95) 0%, rgba(68, 4, 10, 0.97) 65%, rgba(36, 0, 4, 0.99) 100%);
+  border: 3.5px solid var(--gold-warm);
   border-radius: var(--radius-card);
-  padding: 24px 20px;
+  padding: clamp(20px, 4vw, 36px) clamp(14px, 3.5vw, 28px);
   text-align: center;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), var(--shadow-gold);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--shadow-gold);
   position: relative;
   overflow: hidden;
 }
@@ -221,8 +232,8 @@ html, body {
   left: 7px;
   right: 7px;
   bottom: 7px;
-  border: 1.5px solid rgba(255, 215, 0, 0.4);
-  border-radius: 14px;
+  border: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: calc(var(--radius-card) - 6px);
   pointer-events: none;
 }
 
@@ -231,28 +242,28 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 1.8vw, 12px);
   color: var(--gold-light);
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.12rem);
   font-weight: 700;
   letter-spacing: 0.5px;
-  margin-bottom: 12px;
+  margin-bottom: clamp(10px, 2vh, 18px);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.5);
   flex-wrap: wrap;
 }
 
 .sacred-symbol {
   color: var(--gold-primary);
-  font-size: 1.25rem;
+  font-size: 1.25em;
   font-weight: 900;
 }
 
-/* Animated Divine Deity Centerpiece */
+/* Animated Divine Deity Centerpiece (Responsive for all screens) */
 .divine-god-container {
   position: relative;
-  width: 250px;
-  height: 250px;
-  margin: 10px auto 16px;
+  width: clamp(180px, 36vw, 260px);
+  height: clamp(180px, 36vw, 260px);
+  margin: clamp(6px, 1.5vh, 14px) auto clamp(12px, 2.5vh, 20px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,34 +272,34 @@ html, body {
 /* Rotating Divine Aura Rays (તેજોમય પ્રભાચક્ર) */
 .divine-aura-rays {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 115%;
+  height: 115%;
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    rgba(255, 215, 0, 0.4) 0deg 15deg,
+    rgba(255, 215, 0, 0.42) 0deg 15deg,
     transparent 15deg 30deg,
-    rgba(255, 215, 0, 0.4) 30deg 45deg,
+    rgba(255, 215, 0, 0.42) 30deg 45deg,
     transparent 45deg 60deg,
-    rgba(255, 215, 0, 0.4) 60deg 75deg,
+    rgba(255, 215, 0, 0.42) 60deg 75deg,
     transparent 75deg 90deg,
-    rgba(255, 215, 0, 0.4) 90deg 105deg,
+    rgba(255, 215, 0, 0.42) 90deg 105deg,
     transparent 105deg 120deg,
-    rgba(255, 215, 0, 0.4) 120deg 135deg,
+    rgba(255, 215, 0, 0.42) 120deg 135deg,
     transparent 135deg 150deg,
-    rgba(255, 215, 0, 0.4) 150deg 165deg,
+    rgba(255, 215, 0, 0.42) 150deg 165deg,
     transparent 165deg 180deg,
-    rgba(255, 215, 0, 0.4) 180deg 195deg,
+    rgba(255, 215, 0, 0.42) 180deg 195deg,
     transparent 195deg 210deg,
-    rgba(255, 215, 0, 0.4) 210deg 225deg,
+    rgba(255, 215, 0, 0.42) 210deg 225deg,
     transparent 225deg 240deg,
-    rgba(255, 215, 0, 0.4) 240deg 255deg,
+    rgba(255, 215, 0, 0.42) 240deg 255deg,
     transparent 255deg 270deg,
-    rgba(255, 215, 0, 0.4) 270deg 285deg,
+    rgba(255, 215, 0, 0.42) 270deg 285deg,
     transparent 285deg 300deg,
-    rgba(255, 215, 0, 0.4) 300deg 315deg,
+    rgba(255, 215, 0, 0.42) 300deg 315deg,
     transparent 315deg 330deg,
-    rgba(255, 215, 0, 0.4) 330deg 345deg,
+    rgba(255, 215, 0, 0.42) 330deg 345deg,
     transparent 345deg 360deg
   );
   animation: rotateAura 20s linear infinite;
@@ -298,8 +309,8 @@ html, body {
 
 .divine-aura-glow {
   position: absolute;
-  width: 230px;
-  height: 230px;
+  width: 95%;
+  height: 95%;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 235, 59, 0.65) 0%, rgba(255, 152, 0, 0.35) 55%, transparent 75%);
   animation: pulseAuraGlow 3s ease-in-out infinite alternate;
@@ -308,8 +319,8 @@ html, body {
 
 .deity-artwork-wrapper {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 90%;
+  height: 90%;
   animation: floatDeity 4.5s ease-in-out infinite alternate;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.75));
 }
@@ -317,6 +328,7 @@ html, body {
 .deity-svg {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 @keyframes rotateAura {
@@ -331,12 +343,12 @@ html, body {
 
 @keyframes floatDeity {
   0% { transform: translateY(0px); }
-  100% { transform: translateY(-8px); }
+  100% { transform: translateY(-7px); }
 }
 
-/* Cover Typography */
+/* Cover Titles (Fluid Responsive Typography) */
 .cover-titles {
-  margin: 10px 0 20px;
+  margin: clamp(8px, 1.5vh, 16px) 0 clamp(16px, 2.5vh, 24px);
 }
 
 .festival-subbadge {
@@ -346,33 +358,35 @@ html, body {
   background: rgba(255, 215, 0, 0.15);
   border: 1px solid var(--gold-primary);
   color: var(--gold-light);
-  padding: 5px 16px;
+  padding: 5px clamp(12px, 3vw, 20px);
   border-radius: 30px;
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.12rem);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: clamp(8px, 1.5vh, 14px);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  max-width: 95%;
 }
 
 .main-greeting-title {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 12px;
+  margin-bottom: clamp(10px, 1.8vh, 16px);
 }
 
 .title-top {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
   font-weight: 800;
   color: var(--gold-light);
   letter-spacing: 0.8px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+  line-height: 1.3;
 }
 
 .title-highlight {
   font-family: var(--font-royal);
-  font-size: 2.7rem;
+  font-size: clamp(2.1rem, 6.2vw, 3.2rem);
   font-weight: 900;
   color: #ffffff;
   background: linear-gradient(180deg, #ffffff 0%, #fff176 40%, #ffb300 100%);
@@ -380,10 +394,11 @@ html, body {
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 16px rgba(255, 193, 7, 0.6);
   letter-spacing: 0.5px;
+  line-height: 1.25;
 }
 
 .cover-blessing-summary {
-  font-size: 1.18rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.22rem);
   color: #ffecb3;
   max-width: 520px;
   margin: 0 auto;
@@ -396,7 +411,7 @@ html, body {
    THE GRAND CENTER BUTTON (Senior-Friendly, Prominent, Pulsating)
    ============================================================== */
 .center-action-area {
-  margin: 24px 0 20px;
+  margin: clamp(18px, 3vh, 28px) 0 clamp(16px, 2.5vh, 24px);
   display: flex;
   justify-content: center;
 }
@@ -406,22 +421,22 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: clamp(10px, 2.5vw, 16px);
   background: linear-gradient(135deg, #ffd700 0%, #ff8f00 50%, #d84315 100%);
-  border: 3px solid #fff9c4;
+  border: 3.5px solid #fff9c4;
   color: #260507;
-  padding: 16px 28px;
+  padding: clamp(14px, 2.2vh, 18px) clamp(20px, 4vw, 36px);
   border-radius: 50px;
   cursor: pointer;
   box-shadow: 0 8px 30px rgba(255, 111, 0, 0.65), 0 0 25px rgba(255, 215, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.6);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: grandPulse 2.8s infinite;
   overflow: hidden;
-  max-width: 95%;
+  width: min(100%, 480px);
 }
 
 .grand-open-btn:hover, .grand-open-btn:focus-visible {
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-4px) scale(1.03);
   box-shadow: 0 12px 35px rgba(255, 111, 0, 0.85), 0 0 35px rgba(255, 215, 0, 1);
   outline: none;
 }
@@ -442,7 +457,6 @@ html, body {
   }
 }
 
-/* Button Shimmer Sweep Effect */
 .btn-shine {
   position: absolute;
   top: 0;
@@ -461,9 +475,10 @@ html, body {
 }
 
 .btn-diya-icon {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3.8vw, 2.1rem);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
   animation: diyaBounce 2s ease-in-out infinite alternate;
+  flex-shrink: 0;
 }
 
 .btn-diya-icon.right {
@@ -483,7 +498,7 @@ html, body {
 
 .btn-main-text {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: clamp(1.35rem, 3.4vw, 1.75rem);
   font-weight: 800;
   line-height: 1.25;
   color: #210204;
@@ -493,13 +508,13 @@ html, body {
 
 .btn-sub-text {
   font-family: var(--font-main);
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1.02rem);
   font-weight: 700;
   color: #4a0c0f;
   letter-spacing: 0.5px;
 }
 
-/* Bottom Teaser & Diyas */
+/* Bottom Teaser & Interactive Diyas */
 .corner-diyas {
   display: flex;
   justify-content: space-between;
@@ -507,16 +522,18 @@ html, body {
   margin-top: 10px;
   padding-top: 14px;
   border-top: 1px dashed rgba(255, 215, 0, 0.3);
+  gap: 10px;
 }
 
 .cover-sender-teaser {
   color: var(--gold-light);
-  font-size: 1.12rem;
+  font-size: clamp(0.98rem, 2.2vw, 1.15rem);
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 6px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  text-align: center;
 }
 
 .cover-sender-teaser strong {
@@ -524,13 +541,37 @@ html, body {
   font-weight: 800;
 }
 
-/* Diya Widget Component */
+/* Diya Widget Component (Interactive) */
 .diya-widget {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 48px;
+  width: 52px;
+  cursor: pointer;
+  padding: 4px 2px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.diya-widget:hover {
+  transform: scale(1.12);
+}
+
+.diya-widget:active {
+  transform: scale(0.95);
+}
+
+.diya-tap-hint {
+  font-size: 0.65rem;
+  color: #fff59d;
+  font-weight: 700;
+  margin-top: 4px;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.5);
+  padding: 1px 5px;
+  border-radius: 6px;
+  border: 0.5px solid rgba(255, 215, 0, 0.5);
 }
 
 .diya-flame-wrapper {
@@ -593,7 +634,7 @@ html, body {
   background: linear-gradient(135deg, #fffdf8 0%, #fff7e6 50%, #fff3db 100%);
   border: 4px solid var(--gold-primary);
   border-radius: var(--radius-card);
-  padding: 30px 24px 26px;
+  padding: clamp(20px, 4vw, 36px) clamp(14px, 3.5vw, 28px);
   box-shadow: var(--shadow-card), 0 0 35px rgba(255, 215, 0, 0.35);
   position: relative;
   text-align: center;
@@ -603,8 +644,8 @@ html, body {
 /* Card Decorative Golden Frame Corners */
 .card-corner {
   position: absolute;
-  width: 38px;
-  height: 38px;
+  width: clamp(26px, 5vw, 40px);
+  height: clamp(26px, 5vw, 40px);
   border: 3px solid var(--gold-dark);
   pointer-events: none;
 }
@@ -646,15 +687,16 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 320px;
+  max-width: 340px;
   margin: 0 auto 10px;
+  gap: 8px;
 }
 
 .shubh-labh {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
   font-weight: 800;
   color: var(--maroon-royal);
   padding: 4px 10px;
@@ -662,18 +704,20 @@ html, body {
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 2px 6px rgba(117, 8, 19, 0.15);
+  flex-shrink: 0;
 }
 
 .shubh-labh .motif-symbol {
   color: #d50000;
-  font-size: 1.35rem;
+  font-size: 1.25em;
 }
 
 .kalash-container {
-  width: 70px;
-  height: 70px;
+  width: clamp(55px, 12vw, 75px);
+  height: clamp(55px, 12vw, 75px);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   animation: kalashGentleSway 3s ease-in-out infinite alternate;
+  flex-shrink: 0;
 }
 
 .kalash-svg {
@@ -691,17 +735,17 @@ html, body {
   background: rgba(183, 28, 28, 0.07);
   border-top: 1px solid rgba(183, 28, 28, 0.2);
   border-bottom: 1px solid rgba(183, 28, 28, 0.2);
-  padding: 8px 12px;
+  padding: 8px clamp(8px, 2vw, 14px);
   margin: 10px auto 16px;
   border-radius: 6px;
   color: var(--maroon-deep);
-  font-size: 0.98rem;
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
   font-weight: 700;
   line-height: 1.5;
 }
 
 .shloka-sub {
-  font-size: 0.94rem;
+  font-size: 0.95em;
   color: #79111b;
 }
 
@@ -710,31 +754,33 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: clamp(8px, 2vw, 14px);
   background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-royal) 60%, var(--maroon-rich) 100%);
   color: #ffffff;
-  padding: 8px 24px;
+  padding: 8px clamp(16px, 4vw, 28px);
   border-radius: 30px;
   border: 2px solid var(--gold-primary);
   box-shadow: 0 4px 12px rgba(117, 8, 19, 0.35);
   margin-bottom: 8px;
+  max-width: 95%;
 }
 
 .golden-ribbon h2 {
   font-family: var(--font-serif);
-  font-size: 1.9rem;
+  font-size: clamp(1.4rem, 4.2vw, 2rem);
   font-weight: 800;
   color: var(--gold-light);
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
 }
 
 .ribbon-flower {
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
 }
 
 .card-subheading {
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
   color: var(--maroon-rich);
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -747,13 +793,13 @@ html, body {
   background: #ffffff;
   border: 1.5px solid rgba(255, 215, 0, 0.5);
   border-radius: 14px;
-  padding: 20px 20px 16px;
+  padding: clamp(16px, 3.5vw, 24px);
   margin-bottom: 20px;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .salutation {
-  font-size: 1.25rem;
+  font-size: clamp(1.12rem, 2.8vw, 1.32rem);
   font-weight: 800;
   color: var(--maroon-royal);
   margin-bottom: 12px;
@@ -761,7 +807,7 @@ html, body {
 }
 
 .greeting-lead {
-  font-size: 1.2rem;
+  font-size: clamp(1.08rem, 2.6vw, 1.25rem);
   font-weight: 600;
   color: var(--text-body);
   line-height: 1.7;
@@ -771,7 +817,7 @@ html, body {
 .highlight-ram {
   display: block;
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: clamp(1.35rem, 3.8vw, 1.75rem);
   font-weight: 800;
   color: var(--maroon-rich);
   text-align: center;
@@ -790,7 +836,7 @@ html, body {
 }
 
 .blessing-verse {
-  font-size: 1.15rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
   font-weight: 500;
   color: var(--text-body);
   line-height: 1.75;
@@ -806,7 +852,7 @@ html, body {
   background: linear-gradient(135deg, #fff9e6 0%, #fff1c4 100%);
   border: 2px solid var(--gold-dark);
   border-radius: 16px;
-  padding: 16px 18px;
+  padding: clamp(14px, 2.5vw, 20px);
   margin-bottom: 22px;
   box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
 }
@@ -831,7 +877,7 @@ html, body {
 }
 
 .wishing-label {
-  font-size: 1.1rem;
+  font-size: clamp(0.98rem, 2.2vw, 1.15rem);
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 4px;
@@ -839,7 +885,7 @@ html, body {
 
 .sender-name {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: clamp(1.65rem, 4.5vw, 2.3rem);
   font-weight: 900;
   color: var(--maroon-deep);
   letter-spacing: 0.5px;
@@ -848,7 +894,7 @@ html, body {
 }
 
 .sender-family {
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
   font-weight: 700;
   color: var(--maroon-royal);
   margin-bottom: 6px;
@@ -858,28 +904,29 @@ html, body {
   display: inline-block;
   background: var(--maroon-royal);
   color: var(--gold-light);
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.08rem);
   font-weight: 700;
-  padding: 4px 18px;
+  padding: 4px clamp(12px, 3vw, 20px);
   border-radius: 20px;
   margin-top: 4px;
   border: 1px solid var(--gold-primary);
+  max-width: 95%;
 }
 
 /* ==============================================================
-   ACTION BUTTONS GRID (WhatsApp, Flowers, Bell, Back)
+   ACTION BUTTONS GRID (Responsive Grid for Desktop, Tablet, Phone)
    ============================================================== */
 .card-actions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: clamp(8px, 1.8vw, 14px);
   margin-bottom: 16px;
 }
 
 .action-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 12px 14px;
   border-radius: var(--radius-btn);
   cursor: pointer;
@@ -888,21 +935,22 @@ html, body {
   text-align: left;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  min-height: 64px;
+  min-height: 60px;
 }
 
 .action-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 .action-btn:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
 .action-btn-icon {
-  font-size: 1.85rem;
+  font-size: clamp(1.6rem, 3.2vw, 2rem);
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .action-btn-content {
@@ -911,14 +959,14 @@ html, body {
 }
 
 .action-btn-content strong {
-  font-size: 1.12rem;
+  font-size: clamp(0.98rem, 2.2vw, 1.15rem);
   font-weight: 800;
   line-height: 1.25;
 }
 
 .action-btn-content small {
-  font-size: 0.82rem;
-  opacity: 0.9;
+  font-size: clamp(0.78rem, 1.8vw, 0.88rem);
+  opacity: 0.92;
   font-weight: 500;
 }
 
@@ -934,15 +982,21 @@ html, body {
 }
 
 .btn-whatsapp .action-btn-icon {
-  font-size: 2.2rem;
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
 }
 
 .btn-whatsapp .action-btn-content strong {
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
 }
 
 .btn-whatsapp .action-btn-content small {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.98rem);
+}
+
+.btn-copy {
+  background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+  color: #ffffff;
+  border: 1.5px solid #bbdefb;
 }
 
 .btn-flowers {
@@ -958,7 +1012,6 @@ html, body {
 }
 
 .btn-return {
-  grid-column: span 2;
   background: linear-gradient(135deg, #5d4037 0%, #3e2723 100%);
   color: #ffecb3;
   border: 1.5px solid #d7ccc8;
@@ -967,7 +1020,7 @@ html, body {
 
 /* Card Footer Note */
 .card-footer-note {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
   font-weight: 700;
   color: var(--maroon-royal);
   padding-top: 10px;
@@ -977,22 +1030,23 @@ html, body {
 /* Toast Message */
 .toast-message {
   position: fixed;
-  bottom: 25px;
+  bottom: clamp(16px, 3vh, 30px);
   left: 50%;
   transform: translateX(-50%) translateY(100px);
-  background: rgba(30, 0, 5, 0.95);
+  background: rgba(30, 0, 5, 0.96);
   color: var(--gold-light);
   border: 1.5px solid var(--gold-primary);
-  padding: 12px 24px;
+  padding: 10px 22px;
   border-radius: 30px;
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.08rem);
   font-weight: 700;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.65);
   z-index: 1000;
   opacity: 0;
-  transition: all 0.35s ease;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
   text-align: center;
+  max-width: 90vw;
 }
 
 .toast-message.show {
@@ -1001,114 +1055,182 @@ html, body {
 }
 
 /* ==============================================================
-   RESPONSIVE DESIGN (Optimized for Mobile, Tablet & Desktop)
+   DEVICE-SPECIFIC RESPONSIVE BREAKPOINTS
+   (Desktop, Laptop, Tablet, Mobile)
    ============================================================== */
 
-@media (max-width: 520px) {
-  .app-container {
-    padding: 48px 10px 20px;
+/* 1. DESKTOP & WIDE MONITORS (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .screen {
+    max-width: 720px;
   }
 
-  .cover-card {
-    padding: 18px 14px;
-  }
-
-  .sacred-banner {
-    font-size: 0.92rem;
-    gap: 6px;
+  .cover-card, .royal-greeting-card {
+    padding: 38px 34px;
   }
 
   .divine-god-container {
-    width: 210px;
-    height: 210px;
+    width: 270px;
+    height: 270px;
   }
 
   .divine-aura-rays {
-    width: 230px;
-    height: 230px;
+    width: 310px;
+    height: 310px;
   }
 
-  .title-top {
-    font-size: 1.7rem;
+  .action-btn:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* 2. LAPTOPS & DESKTOPS (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .screen {
+    max-width: 680px;
   }
 
-  .title-highlight {
-    font-size: 2.15rem;
+  .divine-god-container {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* 3. TABLETS (768px to 1023px - iPad, Android Tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-container {
+    padding: 60px 20px 35px;
   }
 
-  .cover-blessing-summary {
-    font-size: 1.05rem;
+  .screen {
+    max-width: 640px;
   }
 
-  .grand-open-btn {
-    padding: 14px 20px;
-    gap: 10px;
-    width: 100%;
+  .cover-card, .royal-greeting-card {
+    padding: 30px 24px;
   }
 
-  .btn-main-text {
-    font-size: 1.35rem;
+  .divine-god-container {
+    width: 235px;
+    height: 235px;
   }
 
-  .btn-sub-text {
-    font-size: 0.9rem;
+  .card-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .btn-diya-icon {
-    font-size: 1.6rem;
+  .btn-return {
+    grid-column: span 2;
   }
+}
 
-  .royal-greeting-card {
-    padding: 22px 14px 18px;
-  }
-
-  .golden-ribbon h2 {
-    font-size: 1.5rem;
-  }
-
-  .salutation {
-    font-size: 1.15rem;
-  }
-
-  .greeting-lead {
-    font-size: 1.1rem;
-  }
-
-  .highlight-ram {
-    font-size: 1.35rem;
-    padding: 6px 10px;
-  }
-
-  .blessing-verse {
-    font-size: 1.05rem;
-  }
-
-  .sender-name {
-    font-size: 1.75rem;
-  }
-
-  .sender-family {
-    font-size: 1.2rem;
-  }
-
+/* 4. PHONES & SMALL TABLETS (max-width: 767px) */
+@media (max-width: 767px) {
   .card-actions-grid {
     grid-template-columns: 1fr;
   }
 
-  .btn-whatsapp, .btn-return {
+  .btn-whatsapp, .btn-copy, .btn-flowers, .btn-bell, .btn-return {
     grid-column: span 1;
   }
 
   .corner-diyas {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    justify-content: space-around;
   }
 
   .cover-sender-teaser {
     order: -1;
     width: 100%;
-    justify-content: center;
-    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+}
+
+/* 5. STANDARD SMARTPHONES (max-width: 480px) */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 50px 10px 24px;
+  }
+
+  .cover-card, .royal-greeting-card {
+    padding: 18px 12px;
+    border-width: 2.5px;
+  }
+
+  .sacred-banner {
+    font-size: 0.9rem;
+    gap: 4px;
+  }
+
+  .divine-god-container {
+    width: 195px;
+    height: 195px;
+  }
+
+  .divine-aura-rays {
+    width: 220px;
+    height: 220px;
+  }
+
+  .grand-open-btn {
+    padding: 13px 16px;
+    gap: 10px;
+  }
+
+  .card-divine-header {
+    max-width: 280px;
+  }
+
+  .action-btn {
+    padding: 11px 12px;
+    min-height: 56px;
+  }
+
+  .card-message-body {
+    padding: 14px 12px;
+  }
+}
+
+/* 6. COMPACT PHONES (max-width: 360px - e.g. iPhone SE, Fold) */
+@media (max-width: 360px) {
+  .app-container {
+    padding: 46px 6px 18px;
+  }
+
+  .cover-card, .royal-greeting-card {
+    padding: 14px 8px;
+    border-radius: 14px;
+  }
+
+  .divine-god-container {
+    width: 165px;
+    height: 165px;
+  }
+
+  .divine-aura-rays {
+    width: 185px;
+    height: 185px;
+  }
+
+  .sacred-banner {
+    font-size: 0.82rem;
+  }
+
+  .shubh-labh {
+    font-size: 0.95rem;
+    padding: 3px 6px;
+  }
+
+  .kalash-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .action-btn-content strong {
+    font-size: 0.95rem;
+  }
+
+  .action-btn-content small {
+    font-size: 0.74rem;
   }
 }

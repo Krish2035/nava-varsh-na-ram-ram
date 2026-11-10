@@ -1,7 +1,7 @@
 /**
  * NAVA VARSH NA RAM RAM - GUJARATI GREETING CARD
  * Developed for Veljibhai Padshala & Family
- * Pure Native JavaScript, Web Audio API, Canvas Animation
+ * Fully Responsive, Web Audio API, Canvas Animation
  */
 
 (function () {
@@ -13,8 +13,11 @@
   const openGreetingBtn = document.getElementById('openGreetingBtn');
   const backToCoverBtn = document.getElementById('backToCoverBtn');
   const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+  const copyLinkBtn = document.getElementById('copyLinkBtn');
   const flowerShowerBtn = document.getElementById('flowerShowerBtn');
   const templeBellBtn = document.getElementById('templeBellBtn');
+  const leftDiya = document.getElementById('leftDiya');
+  const rightDiya = document.getElementById('rightDiya');
   const audioToggleBtn = document.getElementById('audioToggleBtn');
   const audioIcon = document.getElementById('audioIcon');
   const audioText = document.getElementById('audioText');
@@ -23,13 +26,14 @@
   const ctx = canvas.getContext('2d');
 
   // ==============================================================
-  // 1. WEB AUDIO API SYNTHESIZER (TEMPLE BELL & DEVOTIONAL CHORD)
-  // No external MP3 files needed: 100% works offline & without errors
+  // 1. WEB AUDIO API SYNTHESIZER (TEMPLE BELL & BANSURI/TANPURA)
+  // 100% Native - Zero external audio dependencies, works offline
   // ==============================================================
   let audioCtx = null;
   let isMusicPlaying = false;
   let ambientOscillators = [];
   let ambientGain = null;
+  let fluteTimer = null;
 
   function initAudioContext() {
     if (!audioCtx) {
@@ -52,7 +56,7 @@
       if (!audioCtx) return;
 
       const now = audioCtx.currentTime;
-      // Authentic temple bell harmonic ratios
+      // Authentic temple brass bell harmonics
       const harmonics = [
         { freq: 587.33, gain: 0.6, decay: 3.2 },  // D5 (Fundamental)
         { freq: 880.00, gain: 0.45, decay: 2.8 }, // A5 (Fifth)
@@ -90,22 +94,75 @@
   }
 
   /**
-   * Soothing Devotional Tanpura / Flute Ambient Drone (સા-પા-સા ઓમ ધ્વનિ)
-   * Specially created to provide peaceful spiritual ambience for elders
+   * Plays a sweet, soft Krishna bansuri flute note with gentle vibrato
+   */
+  function playFluteNote(freq, duration = 2.5) {
+    if (!audioCtx || !isMusicPlaying) return;
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      // Flute warmth filter
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1400, now);
+
+      // Gentle vibrato (LFO)
+      const lfo = audioCtx.createOscillator();
+      const lfoGain = audioCtx.createGain();
+      lfo.frequency.setValueAtTime(5.5, now); // 5.5 Hz vibrato
+      lfoGain.gain.setValueAtTime(4.0, now);
+      lfo.connect(osc.frequency);
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      // Breath attack and gentle swell
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.08, now + 0.4);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      lfo.start(now);
+      osc.start(now);
+
+      lfo.stop(now + duration);
+      osc.stop(now + duration + 0.1);
+    } catch (e) {}
+  }
+
+  // Sacred Raga Bhupali Flute Notes (D, E, F#, A, B, D)
+  const fluteNotes = [587.33, 659.25, 739.99, 880.00, 987.77, 1174.66];
+  let noteIndex = 0;
+  function scheduleNextFluteNote() {
+    if (!isMusicPlaying) return;
+    const note = fluteNotes[noteIndex % fluteNotes.length];
+    playFluteNote(note, 2.8);
+    noteIndex++;
+    // Next note after 4 to 6 seconds
+    const nextInterval = 4000 + Math.random() * 2500;
+    fluteTimer = setTimeout(scheduleNextFluteNote, nextInterval);
+  }
+
+  /**
+   * Soothing Devotional Tanpura / Ambient Drone (સા-પા-સા ઓમ ધ્વનિ)
    */
   function startAmbientDrone() {
     try {
       initAudioContext();
       if (!audioCtx) return;
 
-      stopAmbientDrone(); // Ensure any existing is stopped
+      stopAmbientDrone();
 
       const now = audioCtx.currentTime;
       ambientGain = audioCtx.createGain();
       ambientGain.gain.setValueAtTime(0.0001, now);
-      ambientGain.gain.linearRampToValueAtTime(0.18, now + 2); // Soft volume
+      ambientGain.gain.linearRampToValueAtTime(0.18, now + 2);
 
-      // Low pass filter for warm, relaxing temple sound
       const filter = audioCtx.createBiquadFilter();
       filter.type = 'lowpass';
       filter.frequency.setValueAtTime(650, now);
@@ -113,16 +170,12 @@
       ambientGain.connect(filter);
       filter.connect(audioCtx.destination);
 
-      // Sacred Om Tanpura Frequencies (D, A, D harmonics)
       const baseFreqs = [146.83, 220.00, 293.66, 440.00, 587.33];
       ambientOscillators = baseFreqs.map((f, i) => {
         const osc = audioCtx.createOscillator();
         osc.type = i % 2 === 0 ? 'sine' : 'triangle';
         osc.frequency.setValueAtTime(f, now);
-
-        // Very slight detune for rich celestial chorus effect
         osc.detune.setValueAtTime((i - 2) * 4, now);
-
         osc.connect(ambientGain);
         osc.start(now);
         return osc;
@@ -130,12 +183,16 @@
 
       isMusicPlaying = true;
       updateAudioButtonState();
+
+      // Start gentle divine flute notes
+      fluteTimer = setTimeout(scheduleNextFluteNote, 1500);
     } catch (e) {
       console.warn('Ambient music failed:', e);
     }
   }
 
   function stopAmbientDrone() {
+    if (fluteTimer) clearTimeout(fluteTimer);
     if (ambientGain && audioCtx) {
       const now = audioCtx.currentTime;
       ambientGain.gain.linearRampToValueAtTime(0.0001, now + 1);
@@ -176,14 +233,19 @@
   }
 
   // ==============================================================
-  // 2. CELEBRATORY CANVAS PARTICLES (MARIGOLD & ROSE PETALS)
+  // 2. CELEBRATORY CANVAS PARTICLES (RESPONSIVE FLOWER PETALS)
   // ==============================================================
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
-  window.addEventListener('resize', () => {
+  function handleResize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('orientationchange', () => {
+    setTimeout(handleResize, 150);
   });
 
   const petals = [];
@@ -215,7 +277,7 @@
         const angle = Math.random() * Math.PI * 2;
         const speed = 4 + Math.random() * 9;
         this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed - 5; // Upward explosion
+        this.vy = Math.sin(angle) * speed - 5;
         this.gravity = 0.12;
       } else {
         this.vx = (Math.random() - 0.5) * 1.5;
@@ -236,7 +298,6 @@
         this.vx *= 0.98;
       }
 
-      // Reset when falling off screen
       if (this.y > height + 30) {
         if (this.isBurst) {
           this.opacity -= 0.02;
@@ -254,19 +315,16 @@
       ctx.scale(Math.cos(this.wobble), 1);
       ctx.globalAlpha = Math.max(0, this.opacity);
 
-      // Draw auspicious petal shape
       ctx.beginPath();
       ctx.fillStyle = this.color.fill;
       ctx.strokeStyle = this.color.stroke;
       ctx.lineWidth = 1;
 
       if (this.color.type === 'gold-sparkle') {
-        // Star sparkle
         const r = this.size * 0.5;
         ctx.arc(0, 0, r * 0.6, 0, Math.PI * 2);
         ctx.fill();
       } else {
-        // Curved petal
         ctx.moveTo(0, -this.size);
         ctx.bezierCurveTo(this.size * 0.8, -this.size * 0.5, this.size * 0.8, this.size * 0.5, 0, this.size);
         ctx.bezierCurveTo(-this.size * 0.8, this.size * 0.5, -this.size * 0.8, -this.size * 0.5, 0, -this.size);
@@ -278,18 +336,16 @@
     }
   }
 
-  // Populate initial gentle floating background petals
+  // Populate initial floating petals
   const INITIAL_PETALS_COUNT = 32;
   for (let i = 0; i < INITIAL_PETALS_COUNT; i++) {
-    const p = new Petal(Math.random() * width, Math.random() * height);
-    petals.push(p);
+    petals.push(new Petal(Math.random() * width, Math.random() * height));
   }
 
   function triggerPetalBurst(count = 75, originX = width / 2, originY = height / 2) {
     for (let i = 0; i < count; i++) {
       petals.push(new Petal(originX, originY, true));
     }
-    // Limit array size
     if (petals.length > 180) {
       petals.splice(0, petals.length - 180);
     }
@@ -317,40 +373,28 @@
   // 3. SCREEN NAVIGATION & INTERACTIVITY
   // ==============================================================
 
-  /**
-   * Transition from Cover Screen to Greeting Message Screen
-   */
   function openGreetingCard() {
-    // 1. Play auspicious bell & start soft divine tune
     playTempleBell();
     if (!isMusicPlaying) {
       startAmbientDrone();
     }
 
-    // 2. Trigger rich celebratory flower shower
     triggerPetalBurst(90, width / 2, height * 0.4);
 
-    // 3. Screen transition
     screen1.classList.remove('active-screen');
     screen1.classList.add('hidden-screen');
 
     setTimeout(() => {
       screen2.classList.remove('hidden-screen');
       screen2.classList.add('active-screen');
-
-      // Scroll smoothly to top for elders
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Second burst after card unfolds
       setTimeout(() => {
         triggerPetalBurst(50, width / 2, 200);
       }, 500);
     }, 250);
   }
 
-  /**
-   * Return back to Cover Screen
-   */
   function returnToCoverScreen() {
     playTempleBell();
     screen2.classList.remove('active-screen');
@@ -364,16 +408,12 @@
   }
 
   // ==============================================================
-  // 4. WHATSAPP SHARING (Tailored in Respectful Gujarati)
+  // 4. WHATSAPP & COPY SHARING
   // ==============================================================
 
-  function shareOnWhatsApp() {
-    playTempleBell();
-    triggerPetalBurst(45, width / 2, height * 0.7);
-
+  function getShareGreetingMessage() {
     const currentUrl = window.location.href;
-    const shareGreetingText =
-`*॥ ૐ શ્રી ગણેશાય નમઃ ॥*
+    return `*॥ ૐ શ્રી ગણેશાય નમઃ ॥*
 *✨ નૂતન વર્ષાભિનંદન - નવા વર્ષના રામ રામ! ✨*
 
 આજથી શરૂ થતા હિન્દુ નૂતન વર્ષ (વિક્રમ સંવત ૨૦૮૧) ના પાવન પર્વે આપ સર્વે સ્નેહીજનો અને પરિવારજનોને અમારા હૃદયપૂર્વક નવા વર્ષના રામ રામ!
@@ -386,12 +426,16 @@
 
 👉 આપના માટે બનાવેલ વિશેષ ડિજિટલ શુભેચ્છા પત્રિકા જોવા માટે અહીં ક્લિક કરો:
 ${currentUrl}`;
+  }
 
-    // Encode for WhatsApp URL
+  function shareOnWhatsApp() {
+    playTempleBell();
+    triggerPetalBurst(45, width / 2, height * 0.7);
+
+    const shareGreetingText = getShareGreetingMessage();
     const encodedText = encodeURIComponent(shareGreetingText);
     const whatsappWebUrl = `https://api.whatsapp.com/send?text=${encodedText}`;
 
-    // Try Web Share API on mobile devices first
     if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       navigator.share({
         title: 'નવા વર્ષના રામ રામ | વેલજીભાઈ પાડશાળા',
@@ -406,8 +450,42 @@ ${currentUrl}`;
     showToast('વોટ્સએપ સંદેશ ખૂલી રહ્યો છે... 📲');
   }
 
+  function copyCardLink() {
+    playTempleBell();
+    triggerPetalBurst(40, width / 2, height * 0.5);
+
+    const shareGreetingText = getShareGreetingMessage();
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareGreetingText).then(() => {
+        showToast('શુભેચ્છા સંદેશ અને લિંક કૉપી થઈ ગઈ! 📋');
+      }).catch(() => {
+        showToast('લિંક: ' + window.location.href);
+      });
+    } else {
+      // Fallback
+      const textArea = document.createElement('textarea');
+      textArea.value = shareGreetingText;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      showToast('શુભેચ્છા સંદેશ કૉપી થઈ ગયો! 📋');
+    }
+  }
+
   // ==============================================================
-  // 5. TOAST NOTIFICATION UTILITY
+  // 5. INTERACTIVE DIYAS (TOUCH TO LIGHT & BLESS)
+  // ==============================================================
+  function lightDiya(el) {
+    playTempleBell();
+    const rect = el.getBoundingClientRect();
+    triggerPetalBurst(35, rect.left + rect.width / 2, rect.top);
+    showToast('દીપાવલી અને નૂતન વર્ષના શુભ લાભ! 🪔✨');
+  }
+
+  // ==============================================================
+  // 6. TOAST NOTIFICATION UTILITY
   // ==============================================================
   let toastTimer = null;
   function showToast(message) {
@@ -420,35 +498,33 @@ ${currentUrl}`;
   }
 
   // ==============================================================
-  // 6. EVENT LISTENERS
+  // 7. EVENT LISTENERS
   // ==============================================================
 
-  // Center button on Screen 1
   if (openGreetingBtn) {
     openGreetingBtn.addEventListener('click', openGreetingCard);
   }
 
-  // Back to cover button on Screen 2
   if (backToCoverBtn) {
     backToCoverBtn.addEventListener('click', returnToCoverScreen);
   }
 
-  // WhatsApp Share button
   if (whatsappShareBtn) {
     whatsappShareBtn.addEventListener('click', shareOnWhatsApp);
   }
 
-  // Flower Shower button
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', copyCardLink);
+  }
+
   if (flowerShowerBtn) {
-    flowerShowerBtn.addEventListener('click', (e) => {
+    flowerShowerBtn.addEventListener('click', () => {
       playTempleBell();
-      const rect = flowerShowerBtn.getBoundingClientRect();
-      triggerPetalBurst(70, rect.left + rect.width / 2, rect.top);
+      triggerPetalBurst(75, width / 2, height * 0.4);
       showToast('પુષ્પવર્ષા થઈ રહી છે! 🌸🌺');
     });
   }
 
-  // Temple Bell button
   if (templeBellBtn) {
     templeBellBtn.addEventListener('click', () => {
       playTempleBell();
@@ -456,12 +532,30 @@ ${currentUrl}`;
     });
   }
 
-  // Audio Toggle button
+  if (leftDiya) {
+    leftDiya.addEventListener('click', () => lightDiya(leftDiya));
+    leftDiya.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        lightDiya(leftDiya);
+      }
+    });
+  }
+
+  if (rightDiya) {
+    rightDiya.addEventListener('click', () => lightDiya(rightDiya));
+    rightDiya.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        lightDiya(rightDiya);
+      }
+    });
+  }
+
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener('click', toggleAudio);
   }
 
-  // Auto-init audio on first interaction anywhere on page (browser policy compliance)
   document.body.addEventListener('click', function unlockAudioOnce() {
     initAudioContext();
     document.body.removeEventListener('click', unlockAudioOnce);

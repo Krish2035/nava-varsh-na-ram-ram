@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>નવા વર્ષના રામ રામ | વેલજીભાઈ પાડશાળા</title>
+  <title>નવા વર્ષના રામ રામ | વેલજીભાઈ પડશાળા</title>
 
   <!-- Meta Tags for Social Media & WhatsApp Sharing -->
-  <meta name="description" content="વિક્રમ સંવતના પાવન પર્વે આપ સૌને વેલજીભાઈ પાડશાળા તરફથી નવા વર્ષના રામ રામ અને હાર્દિક નૂતન વર્ષાભિનંદન!">
-  <meta property="og:title" content="🌺 નવા વર્ષના રામ રામ - વેલજીભાઈ પાડશાળા 🪔">
-  <meta property="og:description" content="નૂતન વર્ષાભિનંદન! આપના માટે વેલજીભાઈ પાડશાળા તરફથી સુંદર શુભેચ્છા પત્રિકા. અહીં ક્લિક કરીને જુઓ.">
+  <meta name="description" content="વિક્રમ સંવતના પાવન પર્વે આપ સૌને વેલજીભાઈ પડશાળા તરફથી નવા વર્ષના રામ રામ અને હાર્દિક નૂતન વર્ષાભિનંદન!">
+  <meta property="og:title" content="🌺 નવા વર્ષના રામ રામ - વેલજીભાઈ પડશાળા 🪔">
+  <meta property="og:description" content="નૂતન વર્ષાભિનંદન! આપના માટે વેલજીભાઈ પડશાળા તરફથી સુંદર શુભેચ્છા પત્રિકા. અહીં ક્લિક કરીને જુઓ.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="og-preview.svg">
   <meta name="theme-color" content="#b71c1c">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
 
   <!-- Google Fonts: Hind Vadodara, Noto Serif Gujarati, Rozha One -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,26 +239,28 @@
           </button>
         </div>
 
-        <!-- Traditional Floating Diya Corner Accents -->
+        <!-- Traditional Floating Diya Corner Accents (Clickable to Light Diya) -->
         <div class="corner-diyas">
-          <div class="diya-widget left-diya">
+          <div id="leftDiya" class="diya-widget left-diya interactive-diya" role="button" tabindex="0" aria-label="દીવડો પ્રગટાવો" title="દીવડો પ્રગટાવો 🪔">
             <div class="diya-flame-wrapper">
               <div class="flame-glow"></div>
               <div class="flame-core"></div>
             </div>
             <div class="diya-brass-base"></div>
+            <span class="diya-tap-hint">દીવો પ્રગટાવો</span>
           </div>
           <div class="cover-sender-teaser">
             <span class="flower-icon">🌸</span>
             <span>શુભેચ્છક: <strong>શ્રી વેલજીભાઈ પાડશાળા</strong></span>
             <span class="flower-icon">🌸</span>
           </div>
-          <div class="diya-widget right-diya">
+          <div id="rightDiya" class="diya-widget right-diya interactive-diya" role="button" tabindex="0" aria-label="દીવડો પ્રગટાવો" title="દીવડો પ્રગટાવો 🪔">
             <div class="diya-flame-wrapper">
               <div class="flame-glow"></div>
               <div class="flame-core"></div>
             </div>
             <div class="diya-brass-base"></div>
+            <span class="diya-tap-hint">દીવો પ્રગટાવો</span>
           </div>
         </div>
 
@@ -374,11 +381,20 @@
               <span class="action-btn-icon">📲</span>
               <span class="action-btn-content">
                 <strong>વોટ્સએપ પર મોકલો</strong>
-                <small>મિત્રો-પરિવાર સાથે શેર કરો</small>
+                <small>પરિવાર અને મિત્રો સાથે શેર કરો</small>
               </span>
             </button>
 
-            <!-- 2. Flower Shower Celebration Button -->
+            <!-- 2. Copy Link Button -->
+            <button id="copyLinkBtn" class="action-btn btn-copy" aria-label="શુભેચ્છા લિંક કૉપી કરો">
+              <span class="action-btn-icon">📋</span>
+              <span class="action-btn-content">
+                <strong>લિંક કૉપી કરો</strong>
+                <small>લિંક શેર કરવા કૉપી કરો</small>
+              </span>
+            </button>
+
+            <!-- 3. Flower Shower Celebration Button -->
             <button id="flowerShowerBtn" class="action-btn btn-flowers" aria-label="પુષ્પવર્ષા કરો">
               <span class="action-btn-icon">🌸</span>
               <span class="action-btn-content">
@@ -387,7 +403,7 @@
               </span>
             </button>
 
-            <!-- 3. Temple Bell Chime Button -->
+            <!-- 4. Temple Bell Chime Button -->
             <button id="templeBellBtn" class="action-btn btn-bell" aria-label="મંદિરની ઘંટડી વગાડો">
               <span class="action-btn-icon">🔔</span>
               <span class="action-btn-content">
@@ -396,7 +412,7 @@
               </span>
             </button>
 
-            <!-- 4. Back / Replay Cover Button -->
+            <!-- 5. Back / Replay Cover Button -->
             <button id="backToCoverBtn" class="action-btn btn-return" aria-label="મુખ્ય પાના પર પાછા જાઓ">
               <span class="action-btn-icon">↩️</span>
               <span class="action-btn-content">
@@ -425,3 +441,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#800a18"/>
+      <stop offset="50%" stop-color="#4a040b"/>
+      <stop offset="100%" stop-color="#240004"/>
+    </radialGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff9c4"/>
+      <stop offset="40%" stop-color="#ffd54f"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Ornate Golden Borders -->
+  <rect x="25" y="25" width="1150" height="580" fill="none" stroke="url(#goldBorder)" stroke-width="5" rx="20"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="10,6" rx="14"/>
+
+  <!-- Sacred Top Chants -->
+  <text x="600" y="95" font-family="'Hind Vadodara', sans-serif" font-size="28" font-weight="700" fill="#ffe082" text-anchor="middle" letter-spacing="2">
+    ॥ શ્રી ગણેશાય નમઃ ॥   •   ॥ જય શ્રી કૃષ્ણ ॥   •   ॥ જય સિયારામ ॥
+  </text>
+
+  <!-- Decorative Diyas -->
+  <text x="180" y="260" font-size="70">🪔</text>
+  <text x="960" y="260" font-size="70">🪔</text>
+
+  <!-- Main Festive Title -->
+  <text x="600" y="185" font-family="'Noto Serif Gujarati', serif" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">
+    ✨ વિક્રમ સંવત ૨૦૮૧ • નૂતન વર્ષાભિનંદન ✨
+  </text>
+
+  <!-- Highlight Gujarati Title -->
+  <text x="600" y="295" font-family="'Rozha One', serif" font-size="82" font-weight="900" fill="url(#goldText)" text-anchor="middle" filter="drop-shadow(0 6px 15px rgba(0,0,0,0.8))">
+    નવા વર્ષના રામ રામ
+  </text>
+
+  <!-- Subtitle Message -->
+  <text x="600" y="375" font-family="'Hind Vadodara', sans-serif" font-size="32" font-weight="600" fill="#ffecb3" text-anchor="middle">
+    નવું વર્ષ આપ સૌના જીવનમાં સુખ, શાંતિ, સમૃદ્ધિ અને ઉત્તમ સ્વાસ્થ્ય લાવે એવી મંગલ કામના.
+  </text>
+
+  <!-- Golden Divider -->
+  <line x1="300" y1="420" x2="900" y2="420" stroke="url(#goldBorder)" stroke-width="3"/>
+  <circle cx="600" cy="420" r="10" fill="#ffd700"/>
+
+  <!-- Sender Block -->
+  <text x="600" y="480" font-family="'Hind Vadodara', sans-serif" font-size="30" font-weight="600" fill="#ffe082" text-anchor="middle">
+    શુભેચ્છક:
+  </text>
+  <text x="600" y="535" font-family="'Noto Serif Gujarati', serif" font-size="46" font-weight="900" fill="#ffffff" text-anchor="middle">
+    શ્રી વેલજીભાઈ પાડશાળા તથા સમસ્ત પાડશાળા પરિવાર
+  </text>
+  <text x="600" y="580" font-family="'Hind Vadodara', sans-serif" font-size="24" font-weight="700" fill="#ffca28" text-anchor="middle">
+    જય શ્રી કૃષ્ણ • સાલ મુબારક
+  </text>
+</svg>
